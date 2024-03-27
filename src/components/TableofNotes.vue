@@ -51,29 +51,30 @@
         this.$emit('editNote', this.notes[index]);
       },
       deleteNoteConfirmation(noteId) {
-      // Confirm delete note method
+      
       if (confirm('Are you sure you want to delete this note?')) {
-        // If confirmed, emit event to delete note
+        
         this.$emit('deleteNote', noteId);
       }
     }
     },
     filters: {
-      truncate(value) {
-        // Truncate the description to 15 characters
-        if (value.length > 15) {
-          return value.substring(0, 15) + '...';
-        }
-        return value;
-      }
+  truncate(value) {
+    if (!value) return ''; // edit Iam Return empty string if value is undefined or null
+    if (value.length > 15) {
+      return value.substring(0, 15) + '...';
     }
+    return value;
+  }
+}
+
   }
   </script>
   
   
   <style scoped>
 .notes-container {
-  max-height: 400px; /* Adjust this value as needed */
+  max-height: 400px; 
   overflow-y: auto;
   margin-top: 20px;
 }
